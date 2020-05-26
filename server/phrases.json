@@ -1,0 +1,47 @@
+[
+  {
+    "person": "Steve Jobs",
+    "phrase": "Solo las personas que estan los suficientemente locas para pensar que pueden cambiar el mundo son las que lo hacen.",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/e/e5/Steve_Jobs_WWDC07.jpg"
+  },
+  {
+    "person": "Bill Gates",
+    "phrase": "El ordenador nació para resolver problemas que antes no existian.",
+    "photo": "https://c1.staticflickr.com/4/3197/2472910099_7af8d7a378_b.jpg"
+  },
+  {
+    "person": "Albert Einstein",
+    "phrase": "La imaginación es más importante que el conocimiento. El conocimiento es limitado, mientras que la imaginación no.",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/7/7c/Albert_Einstein_Wax.jpg"
+  },
+  {
+    "person": "Lev Nikoláievich Tolstói - Лев Николаевич Толстой",
+    "phrase": "Mi felicidad consiste en que sé apreciar lo que tengo y no deseo con exceso lo que no tengo.",
+    "photo": "http://malba.s3-website-sa-east-1.amazonaws.com/wp-content/uploads/2014/09/tolstoi-05.jpg"
+  },
+  {
+    "person": "Platón - Πλάτων",
+    "phrase": "El más importante y principal negocio público es la buena educación de la juventud.",
+    "photo": "https://s-media-cache-ak0.pinimg.com/236x/ee/c4/f3/eec4f3420f7024c58f1b44de233d8ecd.jpg"
+  },
+  {
+    "person": "Henrik Ibsen - hɛnɾɪk ˈjoːhɑn ˈɪpsən",
+    "phrase": "Si dudas de ti mismo, estás vencido de antemano.",
+    "photo": "https://ebooks.adelaide.edu.au/i/ibsen/henrik/gosse/images/bust2.jpg"
+  },
+  {
+    "person": "Platón - Πλάτων",
+    "phrase": "El más importante y principal negocio público es la buena educación de la juventud.",
+    "photo": "https://s-media-cache-ak0.pinimg.com/236x/ee/c4/f3/eec4f3420f7024c58f1b44de233d8ecd.jpg"
+  },
+  {
+    "person": "Platón - Πλάτων",
+    "phrase": "El más importante y principal negocio público es la buena educación de la juventud.",
+    "photo": "https://s-media-cache-ak0.pinimg.com/236x/ee/c4/f3/eec4f3420f7024c58f1b44de233d8ecd.jpg"
+  },
+  {
+    "person": "Platón - Πλάτων",
+    "phrase": "El más importante y principal negocio público es la buena educación de la juventud.",
+    "photo": "https://s-media-cache-ak0.pinimg.com/236x/ee/c4/f3/eec4f3420f7024c58f1b44de233d8ecd.jpg"
+  }
+]

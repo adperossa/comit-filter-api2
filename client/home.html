@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/kognise/water.css@latest/dist/dark.css">
+  <title>Home</title>
+  <style>
+    #searchField {
+      position: relative;
+    }
+
+    #searchInput {
+      margin-top: 1em;
+      width: 500px;
+    }
+
+    #resultsUl {
+      list-style: none;
+      position: absolute;
+      top: 38px;
+      background-color: #161f27;
+      padding: 10px;
+      border-radius: 6px;
+      margin-top: 6px;
+      width: 500px;
+    }
+
+    #resultsUl li {
+      margin-bottom: 8px;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>Búsqueda de frases</h1>
+  <hr>
+  <div id="searchField">
+    <input type="text" id="searchInput" placeholder="Ingrese su búsqueda">
+    <div id="resultsContainer" class="hidden"></div>
+  </div>
+
+  <script>
+    const searchField = document.getElementById("searchField");
+    const searchInput = document.getElementById("searchInput");
+    let resultsContainer = document.getElementById("resultsContainer");
+
+    searchInput.addEventListener("input", function (e) {
+      console.log("input");
+
+      let query = searchInput.value;
+
+      // Si el campo de búsqueda está vacío no buscar nada, retornar sin llamar a la api
+      // para evitar requests innecesarios.
+      // Si además había resultados de una búsqueda anterior, ocultarlos.
+      if (query === "") {
+        resultsContainer.classList.add("hidden");
+        return;
+      }
+
+      let xhr = new XMLHttpRequest();
+      xhr.addEventListener("load", function () {
+
+        if (this.status === 200) {
+          showResults(JSON.parse(this.responseText), query);
+        } else {
+          console.error(`Se encontró error ${this.status}: ${this.statusText} al buscar.`);
+        }
+
+      })
+
+      xhr.open("GET", `/phrases?search=${query}`);
+      xhr.send();
+
+    });
+
+    /**
+     * Muestra los resultados de la búsqueda
+     * @param {array} data El array de frases - [{ person: string, phrase: string, photo: string }, ...]
+     * @param {string} query El string que se usó como filtro de búsqueda
+     */
+    function showResults(data, query) {
+
+      // Inicializo la lista que contendrá los LI de resultados
+      let resultsUl = document.createElement("UL");
+      resultsUl.id = "resultsUl";
+
+      // Parseo cada frase retornada para construir los list items, y los agrego a la UL
+      data.forEach(item => {
+
+        let li = document.createElement("LI");
+
+        // Agrego <strong> para destacar en que parte de la frase se encontro la query de busqueda
+        li.innerHTML = item.phrase.replace(new RegExp(query, "g"), `<strong>${query}</strong>`);
+        li.originalPhrase = item.phrase;
+
+        // Agrego un event listener de click a cada LI,
+        // que actualiza el search input con el valor del LI.
+        // También dispara un evento input manualmente.
+        li.addEventListener("click", function () {
+          searchInput.value = this.originalPhrase;
+          searchInput.dispatchEvent(new Event("input"));
+        })
+
+        // Agrego el LI al UL
+        resultsUl.append(li);
+
+      });
+
+      // Si no hubo resultados, oculto la lista de resultados
+      // Si hubo, limpio el container, agrego la lista de resultados y la muestro
+      if (resultsUl.innerHTML === "") {
+        resultsContainer.classList.add("hidden");
+      } else {
+        resultsContainer.innerHTML = "";
+        resultsContainer.append(resultsUl);
+        resultsContainer.classList.remove("hidden");
+      }
+
+    }
+  </script>
+
+</body>
+
+</html>
